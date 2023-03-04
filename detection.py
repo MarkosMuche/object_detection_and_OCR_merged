@@ -7,8 +7,6 @@ import numpy as np
 from PIL import Image
 from object_detection.utils import label_map_util,visualization_utils as v_utils,config_util
 from matplotlib import pyplot as plt
-
-
 def single_model_inference(image,MODEL_PATH,LABELS_PATH ):
     
     detection_model = tf.saved_model.load(MODEL_PATH)
@@ -48,7 +46,7 @@ def single_model_inference(image,MODEL_PATH,LABELS_PATH ):
 if __name__ == "__main__":
 
     img_path = ['TensorFlow/workspace/training_demo/images/train/Screenshot-2022-01-13-at-12.12.08.png',] # add all your image path here Example : "E:\Train\IMG22.jpg"
-    MODEL_PATH = "/content/ID-card-detection-project/TensorFlow/workspace/training_demo/exported-models/my_model/saved_model" # add "model_graph" path from the drive
+    MODEL_PATH = '/home/mark/Documents/Ben/merged/trained_models/detection/my_model/saved_model' # add "model_graph" path from the drive
     LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
          
     i = 0
@@ -56,7 +54,6 @@ if __name__ == "__main__":
         i += 1
         img = cv2.imread(p)
         # img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-        MODEL_PATH = '/media/mark/New Volume/projects/Ben/ID-card-detection-project/Trained_model/my_model/saved_model'
         LABELS_PATH = '/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/annotations'
         final_Img = single_model_inference(img, MODEL_PATH, LABELS_PATH)
         final_Img = cv2.cvtColor(final_Img,cv2.COLOR_RGB2BGR)

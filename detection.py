@@ -45,16 +45,15 @@ def single_model_inference(image,MODEL_PATH,LABELS_PATH ):
 
 if __name__ == "__main__":
 
-    img_path = ['TensorFlow/workspace/training_demo/images/train/Screenshot-2022-01-13-at-12.12.08.png',] # add all your image path here Example : "E:\Train\IMG22.jpg"
-    MODEL_PATH = '/home/mark/Documents/Ben/merged/trained_models/detection/my_model/saved_model' # add "model_graph" path from the drive
-    LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
+    img_path = ['data/images/test/1000-receipt.jpg']
+    MODEL_PATH = '/home/mark/Documents/Ben/merged/trained_models/detection/my_model/saved_model/' # add "model_graph" path from the drive
+    LABELS_PATH = "/home/mark/Documents/Ben/merged/Annotations/id_card_labels_train.csv" # add the "Annotations" folder path 
          
     i = 0
     for p in img_path:
         i += 1
         img = cv2.imread(p)
         # img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-        LABELS_PATH = '/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/annotations'
         final_Img = single_model_inference(img, MODEL_PATH, LABELS_PATH)
         final_Img = cv2.cvtColor(final_Img,cv2.COLOR_RGB2BGR)
         image_name = 'Saved_img_{}.jpg'.format(str(i));
